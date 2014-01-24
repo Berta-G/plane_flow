@@ -29,10 +29,14 @@ describe Airport do
 		end
 
 		it "a plane cannot land if airport is full" do
-			Airport.any_instance.stub(:stormy_weather? => false)
 			10.times { airport.land(plane) }
 			expect { airport.land(plane) }.to raise_error
 		end
+
+		it "if the plane is not in that airport it wont take off" do
+			expect {airport.take_off(plane)}.to raise_error
+		end
+
 	end
 
 	context 'stormy weather' do

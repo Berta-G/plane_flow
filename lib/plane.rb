@@ -1,15 +1,10 @@
 
 class Plane
 
-	attr_accessor :status
+	attr_reader :status
 
 	def initialize(status = :flying)
 		@status = status
-	end
-	
-
-	def status
-		@status
 	end
 
 	def request_take_off(airport)
@@ -25,7 +20,7 @@ class Plane
 	end
 
 	def land
-		@status = :landed
+		@status= :landed
 	end
 
 	def landed?

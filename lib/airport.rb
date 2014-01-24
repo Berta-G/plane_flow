@@ -4,19 +4,15 @@ class Airport
 
 	include WeatherCondition
 
+	attr_reader :planes, :capacity
+
 	DEFAULT_CAPACITY = 10
 
 	def initialize(options={})
 		@capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
 		@planes ||= []
 	end
-
-	attr_accessor = :planes, :capacity
-
-	def planes
-		@planes
-	end
-
+	
 	def capacity
 		@capacity
 	end
@@ -24,18 +20,18 @@ class Airport
 	def land(plane)
 		raise "Airport is full" if full?	
 		raise "Stormy weather, plane cannot land" if stormy_weather?
-		planes << plane
+		@planes << plane
 		plane.land
 	end
 
 	def take_off(plane)
 		raise "Stormy weather, plane cannot land" if stormy_weather?
-		planes.delete(plane)
+		raise "Plane not in this airport" if @planes.delete(plane).nil?
 		plane.take_off
 	end
 
 	def full?
-		planes.count >= capacity
+		@planes.count >= capacity
 	end
 
 
