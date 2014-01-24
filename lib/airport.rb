@@ -22,14 +22,16 @@ class Airport
 	end
 
 	def land(plane)
-		raise "Airport is full" if full?
+		raise "Airport is full" if full?	
 		raise "Stormy weather, plane cannot land" if stormy_weather?
 		planes << plane
+		plane.land
 	end
 
 	def take_off(plane)
 		raise "Stormy weather, plane cannot land" if stormy_weather?
 		planes.delete(plane)
+		plane.take_off
 	end
 
 	def full?

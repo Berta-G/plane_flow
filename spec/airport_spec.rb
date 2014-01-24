@@ -3,7 +3,7 @@ require_relative '../lib/airport'
 describe Airport do
 
 	let(:airport)	{Airport.new}
-	let(:plane) 	{double :plane}
+	let(:plane) 	{Plane.new}
 
 	it "can be created with a specific capacity" do
 		airport = Airport.new({:capacity => 5})
@@ -11,11 +11,11 @@ describe Airport do
 	end
 
 
-
 	context 'taking off and landing' do
 		it "a plane can land in sunny weather" do
 			Airport.any_instance.stub(:stormy_weather? => false)
-			expect(airport.land(plane)).to eq([plane])
+			airport.land(plane)
+			expect(airport.planes).to eq([plane])
 		end
 
 		it "a plane can take off in sunny weather" do

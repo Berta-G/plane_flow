@@ -11,22 +11,28 @@ class Plane
 		@status
 	end
 
-	def take_off(airport)
+	def request_take_off(airport)
 		airport.take_off(self)
-		plane_is_flying
 	end
 
-	def land(airport)
+	def request_landing(airport)
 		airport.land(self)
-		plane_has_landed
 	end
 
-	def plane_is_flying
+	def take_off
 		@status = :flying
 	end
 
-	def plane_has_landed
+	def land
 		@status = :landed
+	end
+
+	def landed?
+		@status == :landed
+	end
+
+	def flying?
+		@status == :flying
 	end
 
 end

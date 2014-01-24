@@ -8,4 +8,8 @@ module WeatherCondition
 		set_weather_condition == :stormy
 	end
 
+	def sunny_weather?
+		set_weather_condition == :sunny
+	end
+
 end
