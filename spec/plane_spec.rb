@@ -9,15 +9,20 @@ describe Plane do
 		expect((plane)).to be_flying
 	end
 
-	context "Change of status" do
-		it "can change from flying to landing" do
+	context "change of status" do
+		it "can change from flying to landed" do
 			plane.land
 			expect(plane).to be_landed
-			end
+		end
+
+			it "can change from landed to flying" do
+				plane.land
+				plane.take_off
+				expect(plane).to be_flying
+		end
 	end
 
-
-	context "with unny weather" do
+	context "Sunny weather" do
 
 		before do
 			Airport.any_instance.stub(:stormy_weather? => false)
@@ -35,7 +40,7 @@ describe Plane do
 		end
 	end
 
-	context "with stormy weather" do
+	context "Stormy weather" do
 
 		before do
 			Airport.any_instance.stub(:stormy_weather? => true)

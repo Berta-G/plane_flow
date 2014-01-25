@@ -24,15 +24,21 @@ describe "The grand finale (last spec)" do
 		airport.planes.each {|plane| expect(plane).to be_landed}
 	end
 
-	it "The airport now should be full after 6 planes landing" do
+	it "the airport is full after 6 planes landing" do
 		fill_airport_with_planes
 	 	expect(airport).to be_full
 	end
 
-	it "All planes sould be flying after take off" do
+	it "all planes are flying after take off" do
 		fill_airport_with_planes
 		test_planes.each {|plane| plane.request_take_off(airport)}
 		airport.planes.each {|plane| expect(plane).to be_flying}
+	end
+
+	it "the airport is empty after take off" do
+		fill_airport_with_planes
+		test_planes.each {|plane| plane.request_take_off(airport)}
+		expect(airport.planes.count).to eq(0)
 	end
 
 end

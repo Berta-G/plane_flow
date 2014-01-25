@@ -4,7 +4,7 @@ class Airport
 
 	include WeatherCondition
 
-	attr_accessor :capacity, :planes
+	attr_reader :capacity, :planes
 
 	DEFAULT_CAPACITY = 10
 
@@ -29,6 +29,5 @@ class Airport
 	def full?
 		planes.count >= capacity
 	end
-
 
 end

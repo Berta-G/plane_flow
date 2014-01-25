@@ -11,18 +11,18 @@ describe Airport do
 		expect(airport.capacity).to eq(5)
 	end
 
-	context "Sunny Weather" do
+	context "Sunny weather" do
 
 		before do
 			Airport.any_instance.stub(:stormy_weather? => false)
 		end
 
-		it "a plane can land in sunny weather" do
+		it "a plane can land" do
 			airport.land(plane)
 			expect(airport.planes).to eq([plane])
 		end
 
-		it "a plane can take off in sunny weather" do
+		it "a plane can take off" do
 			airport.land(plane)
 			airport.take_off(plane)
 			expect(airport.planes).to eq([])
@@ -39,17 +39,17 @@ describe Airport do
 
 	end
 
-	context 'Stormy Weather' do
+	context 'Stormy weather' do
 
 		before do
 			Airport.any_instance.stub(:stormy_weather? => true)
 		end
 
-		it "a plane cannot land stormy weather" do 
+		it "a plane cannot land" do 
 			expect { airport.land(plane)}.to raise_error
 		end
 
-		it "a plane cannot take off in stormy weather" do
+		it "a plane cannot take off" do
 			expect { airport.take_off(plane)}.to raise_error
 		end
 
