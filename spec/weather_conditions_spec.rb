@@ -1,11 +1,10 @@
 require_relative '../lib/weather_conditions'
 
+class Weather
+	include WeatherCondition
+end
+
 describe WeatherCondition do
-
-
-	class Weather
-		include WeatherCondition
-	end
 
 	let(:weather) { Weather.new }
 
@@ -18,5 +17,5 @@ describe WeatherCondition do
 		Weather.any_instance.stub(:set_weather_condition => :sunny)
 		expect(weather.stormy_weather?).to be_false
 	end
-
+	
 end
