@@ -7,6 +7,9 @@ class Plane
 		@status = :flying
 	end
 
+	# these two methods don't do much,
+	# it would make more sense to not have them at all
+	# because we can always call the airport's methods directly
 	def request_take_off(airport)
 		airport.take_off(self)
 	end
